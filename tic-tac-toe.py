@@ -9,7 +9,13 @@ def mostrar_tablero():
      for fila in tablero:
             print('----+---+---*')
             print('|', ' | '.join(fila), '|')
-
+def marcar_tablero(tablero, numero, marca):
+	for i in range(len(tablero)):
+		for j in range(len(tablero)):
+			if (tablero[i][j]) == numero):
+				tablero[i][j] = marca
+				return True
+	return False
  
 while True:      
     # Mostrar el tablero
@@ -17,7 +23,9 @@ while True:
     if(1 <= mi_movimiento <= 9):
         for i in range(len(tablero)):
                 for j in range(len(tablero[i])):
-                    if tablero[i][j] == str(mi_movimiento):
+                    if tablero[i][j] == numero:
+                         
+                         str(mi_movimiento):
                         tablero[i][j]= 'o'
                         print(tablero)
                         mov_maquina = random.randrange(1,9)
