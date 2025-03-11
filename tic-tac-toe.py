@@ -2,44 +2,52 @@ import random
 
 
 def create_tablero():
-    tablero = [[str(3 * i + j + 1)for j in range(3)] for i in range(3)]
+    return [[str(3 * i + j + 1)for j in range(3)] for i in range(3)]
 
-def mostrar_tablero():
-     tablero = create_tablero()
+def mostrar_tablero(tablero):
      for fila in tablero:
             print('----+---+---*')
             print('|', ' | '.join(fila), '|')
+            
 def marcar_tablero(tablero, numero, marca):
 	for i in range(len(tablero)):
 		for j in range(len(tablero)):
-			if (tablero[i][j]) == numero):
+			if (tablero[i][j] == numero):
 				tablero[i][j] = marca
 				return True
 	return False
- 
-while True:      
-    # Mostrar el tablero
-       mi_movimiento = (int(input('Digite su movimiento:')))
-    if(1 <= mi_movimiento <= 9):
-        for i in range(len(tablero)):
-                for j in range(len(tablero[i])):
-                    if tablero[i][j] == numero:
-                         
-                         str(mi_movimiento):
-                        tablero[i][j]= 'o'
-                        print(tablero)
-                        mov_maquina = random.randrange(1,9)
-                        print(mov_maquina)
-                        for a in range(len(tablero)):
-                            for b in range(len(tablero[a])):
-                                if (tablero[a][b] != 'o' or1 tablero[a][b] != 'x'):
-                                    if tablero[a][b] == str(mov_maquina):
-                                        tablero[a][b] = 'x'
-                                        break
-                                else:
-                                    mov_maquina = random.randrange(1,9)
-                        break
-    elif mi_movimiento == 0:
-        break
-    else:
-        print('Movimiento invalido')
+
+def  jugar_tic_tac_toe():
+    print("Bienvenido a jugar tic tac toe")
+    tablero = create_tablero()
+    while True:
+        mostrar_tablero(tablero)
+                
+        #Turno de usuario
+        while True:
+            numero = int(input("Ingrese un numero del 1 al 9 para marcar y 0 para salir: "))
+            if numero == 0:
+                print("Hasta pronto")
+                return False
+            if not 1 <= numero <= 9 or not marcar_tablero(tablero, str(numero), 'o'):
+                print("Ingrese un numero entre 1 y 9 o ya esta marcado")
+                continue
+            marcar_tablero(tablero, str(numero), 'o')
+            print("numero marcado")
+            #mostrar_tablero(tablero)
+            break
+        #Turno de maquina
+        while True:
+            mov_maquina = random.randrange(1,10)
+            if not 1 <= mov_maquina <= 9 or not marcar_tablero(tablero, str(mov_maquina), 'x'):
+                continue
+            marcar_tablero(tablero, str(mov_maquina), "x")
+            break
+            
+    mostrar_tablero(tablero)
+            
+jugar_tic_tac_toe()
+            
+                 
+     
+
