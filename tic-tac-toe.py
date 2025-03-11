@@ -35,6 +35,16 @@ def verificar_ganador(tablero):
     return None
 
 
+def verificar_tablero(tablero):
+    for fila in tablero:
+        for casilla in fila:
+            if isinstance(casilla, int):
+                return False
+    return True
+
+
+
+
 def jugar_tic_tac_toe():
     print("Bienvenido a jugar tic tac toe")
     tablero = create_tablero()
@@ -64,6 +74,9 @@ def jugar_tic_tac_toe():
             elif ganador == "x":
                 print("La máquina ha ganado. ¡Mejor suerte la próxima vez!")
             break
+        if  verificar_tablero(tablero):
+            print("El tablero se ha llenado, es un empate!")
+            break
 
 
 
@@ -81,6 +94,9 @@ def jugar_tic_tac_toe():
                 print("¡Felicidades, ha ganado el usuario!")
             elif ganador == "x":
                 print("La máquina ha ganado. ¡Mejor suerte la próxima vez!")
+            break
+        if verificar_tablero(tablero):
+            print("El tablero se ha llenado, es un empate!")
             break
 
 
