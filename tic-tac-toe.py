@@ -35,13 +35,20 @@ def verificar_ganador(tablero):
     return None
 
 
+'''
 def verificar_tablero(tablero):
     for fila in tablero:
         for casilla in fila:
             if isinstance(casilla, int):
                 return False
     return True
-
+'''
+def verificar_tablero(tablero):
+    for fila in tablero:
+        for casilla in fila:
+            if casilla not in ['x', 'o']:  # Si hay algo que no sea 'X' o 'O'
+                return False
+    return True
 
 
 
